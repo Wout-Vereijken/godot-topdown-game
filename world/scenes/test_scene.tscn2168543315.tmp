@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnd57sik8f71y"]
+
+[ext_resource type="Script" uid="uid://dnucbjjdcub3x" path="res://test_scene.gd" id="1_hwqe0"]
+[ext_resource type="Texture2D" uid="uid://gb2sgv85evp0" path="res://world/assets/fantasy_ [version 2.0]/forest_/forest_ [resources].png" id="2_d3ufx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_43ifv"]
+texture = ExtResource("2_d3ufx")
+1:5/size_in_atlas = Vector2i(1, 2)
+1:5/0 = 0
+2:5/size_in_atlas = Vector2i(1, 2)
+2:5/0 = 0
+3:5/size_in_atlas = Vector2i(2, 2)
+3:5/0 = 0
+5:5/size_in_atlas = Vector2i(2, 2)
+5:5/0 = 0
+1:4/0 = 0
+1:3/0 = 0
+2:3/size_in_atlas = Vector2i(2, 2)
+2:3/0 = 0
+4:3/0 = 0
+4:4/0 = 0
+5:3/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+6:3/0 = 0
+1:1/size_in_atlas = Vector2i(1, 2)
+1:1/0 = 0
+2:1/size_in_atlas = Vector2i(1, 2)
+2:1/0 = 0
+3:1/size_in_atlas = Vector2i(3, 2)
+3:1/0 = 0
+6:1/size_in_atlas = Vector2i(1, 2)
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:1/0 = 0
+9:2/0 = 0
+10:1/0 = 0
+10:2/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+10:4/0 = 0
+9:4/0 = 0
+10:5/0 = 0
+9:5/0 = 0
+8:5/0 = 0
+7:5/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+1:7/size_in_atlas = Vector2i(1, 2)
+1:7/0 = 0
+2:7/size_in_atlas = Vector2i(1, 2)
+2:7/0 = 0
+3:7/size_in_atlas = Vector2i(1, 2)
+3:7/0 = 0
+4:7/size_in_atlas = Vector2i(1, 2)
+4:7/0 = 0
+6:7/size_in_atlas = Vector2i(1, 2)
+6:7/0 = 0
+7:7/size_in_atlas = Vector2i(1, 2)
+7:7/animation_columns = 4
+7:7/0 = 0
+8:7/size_in_atlas = Vector2i(1, 2)
+8:7/animation_columns = 4
+8:7/0 = 0
+9:7/size_in_atlas = Vector2i(1, 2)
+9:7/animation_columns = 4
+9:7/0 = 0
+10:7/size_in_atlas = Vector2i(1, 2)
+10:7/animation_columns = 4
+10:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vudbx"]
+sources/1 = SubResource("TileSetAtlasSource_43ifv")
+
+[node name="test_scene" type="Node2D"]
+script = ExtResource("1_hwqe0")
+
+[node name="ground" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_vudbx")
+
+[node name="preview" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_vudbx")

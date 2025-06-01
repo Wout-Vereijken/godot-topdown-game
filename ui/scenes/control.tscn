@@ -1,0 +1,234 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0tyxcdctkwur"]
+
+[ext_resource type="Texture2D" uid="uid://bpvd645wdfqoy" path="res://ui/assets/buidling icons/forest_tree.png" id="1_aittp"]
+[ext_resource type="Script" uid="uid://4g3jnpxpp81a" path="res://ui/scripts/buildings_menu.gd" id="1_gbrtg"]
+[ext_resource type="Texture2D" uid="uid://culap7fol8lfp" path="res://ui/assets/buidling icons/forest_tree_darkgreen.png" id="2_gbrtg"]
+[ext_resource type="Texture2D" uid="uid://cku26gpytklvs" path="res://ui/assets/buidling icons/forest_tree_orange.png" id="3_xindt"]
+[ext_resource type="Texture2D" uid="uid://cngpfrc5mpddf" path="res://ui/assets/buidling icons/fores_tree_pink.png" id="4_ymxhy"]
+[ext_resource type="Texture2D" uid="uid://mb0ycg8f1kqb" path="res://ui/assets/buidling icons/forest_bush.png" id="5_queof"]
+[ext_resource type="Texture2D" uid="uid://buo5m4rx6uhj1" path="res://ui/assets/buidling icons/forest_bush_2.png" id="6_idqvl"]
+[ext_resource type="Texture2D" uid="uid://c1ltu5od3auqt" path="res://ui/assets/buidling icons/forest_rock_big.png" id="7_h0fjf"]
+[ext_resource type="Texture2D" uid="uid://3k204d1k6f31" path="res://ui/assets/buidling icons/forest_rock_small.png" id="8_5t2d5"]
+[ext_resource type="Texture2D" uid="uid://fb168vkla0oq" path="res://ui/assets/buidling icons/forest_rock_small_2.png" id="9_wa0ov"]
+
+[sub_resource type="Theme" id="Theme_gbrtg"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = SubResource("Theme_gbrtg")
+script = ExtResource("1_gbrtg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 928.0
+offset_bottom = 212.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "forest items"
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "cave items"
+
+[node name="Button3" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "desert items"
+
+[node name="Button4" type="Button" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "house items"
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_direction = 4
+layout_mode = 2
+columns = 7
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("1_aittp")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="HBoxContainer/GridContainer/TextureRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 46.0
+offset_right = -46.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("2_gbrtg")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="HBoxContainer/GridContainer/TextureRect2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 46.0
+offset_right = -46.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("3_xindt")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="HBoxContainer/GridContainer/TextureRect3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 46.0
+offset_right = -46.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("4_ymxhy")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="HBoxContainer/GridContainer/TextureRect4"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 46.0
+offset_right = -46.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect5" type="TextureRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("5_queof")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="HBoxContainer/GridContainer/TextureRect5"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 46.0
+offset_right = -46.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect6" type="TextureRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("6_idqvl")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="HBoxContainer/GridContainer/TextureRect6"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 46.0
+offset_right = -46.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect7" type="TextureRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("7_h0fjf")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="HBoxContainer/GridContainer/TextureRect7"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 46.0
+offset_right = -46.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect8" type="TextureRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("8_5t2d5")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="HBoxContainer/GridContainer/TextureRect8"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 46.0
+offset_right = -46.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect9" type="TextureRect" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("9_wa0ov")
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="HBoxContainer/GridContainer/TextureRect9"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 46.0
+offset_right = -46.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="HBoxContainer/GridContainer/TextureRect/Button" to="." method="_on_button_pressed_forest_tree"]
+[connection signal="pressed" from="HBoxContainer/GridContainer/TextureRect2/Button" to="." method="_on_button_pressed_forest_tree_dark"]
+[connection signal="pressed" from="HBoxContainer/GridContainer/TextureRect3/Button" to="." method="_on_button_pressed_forest_tree_orange"]
