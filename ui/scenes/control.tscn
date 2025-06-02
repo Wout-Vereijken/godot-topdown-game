@@ -20,7 +20,7 @@ theme = SubResource("Theme_gbrtg")
 script = ExtResource("1_gbrtg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
 offset_right = 928.0
 offset_bottom = 212.0
 

@@ -19,6 +19,10 @@ config/icon="uid://dv27skmgyr7ot"
 
 Global="*res://miscelanious/scripts/Global.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 mouse_click_left={
