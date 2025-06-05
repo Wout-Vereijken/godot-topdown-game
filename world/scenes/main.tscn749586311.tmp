@@ -34,14 +34,14 @@ tile_set = SubResource("TileSet_tns44")
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 493.0
-offset_bottom = 123.0
+offset_right = 525.0
+offset_bottom = 236.0
 script = ExtResource("2_11sfw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
 layout_mode = 0
 offset_right = 485.0
-offset_bottom = 118.0
+offset_bottom = 224.0
 
 [node name="SizeContainer" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer"]
 layout_mode = 2

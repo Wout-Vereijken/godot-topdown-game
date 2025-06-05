@@ -90,7 +90,8 @@ func regenerate():
 	noise.seed = randi()
 	generate_island()
 
-func update_settings(new_noise_scale: float, new_island_size: float, new_falloff_strength: float):
+func update_settings(new_map_size: float, new_noise_scale: float, new_island_size: float, new_falloff_strength: float):
+	map_size = new_map_size
 	noise_scale = new_noise_scale
 	island_size = new_island_size
 	falloff_strength = new_falloff_strength
