@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7doi2v7no2c3"]
+
+[ext_resource type="Script" uid="uid://gd63k1mfrae6" path="res://IslandGenerator.gd" id="1_6y8n1"]
+[ext_resource type="Script" uid="uid://bt2m70xruk2ut" path="res://IslandGeneratorUI.gd" id="2_11sfw"]
+[ext_resource type="Texture2D" uid="uid://j6mqyhs6j0a8" path="res://world/assets/simple tileset.png" id="2_fltyv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2kdp"]
+texture = ExtResource("2_fltyv")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tns44"]
+sources/1 = SubResource("TileSetAtlasSource_l2kdp")
+
+[node name="Main" type="Node2D"]
+
+[node name="IslandGenerator" type="Node2D" parent="."]
+script = ExtResource("1_6y8n1")
+map_size = null
+noise_scale = null
+island_size = null
+falloff_strength = null
+generate_on_ready = null
+
+[node name="TextureRect" type="TextureRect" parent="IslandGenerator"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="IslandGenerator"]
+tile_set = SubResource("TileSet_tns44")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 525.0
+offset_bottom = 236.0
+script = ExtResource("2_11sfw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_right = 485.0
+offset_bottom = 224.0
+
+[node name="SizeContainer" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="SizeLabel" type="Label" parent="CanvasLayer/UI/VBoxContainer/SizeContainer"]
+layout_mode = 2
+text = "Size"
+
+[node name="SizeSlider" type="HSlider" parent="CanvasLayer/UI/VBoxContainer/SizeContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="NoiseContainer" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="NoiseLabel" type="Label" parent="CanvasLayer/UI/VBoxContainer/NoiseContainer"]
+layout_mode = 2
+text = "Noise"
+
+[node name="NoiseSlider" type="HSlider" parent="CanvasLayer/UI/VBoxContainer/NoiseContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="IslandSizeContainer" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="IslandSizeLabel" type="Label" parent="CanvasLayer/UI/VBoxContainer/IslandSizeContainer"]
+layout_mode = 2
+text = "Island Size"
+
+[node name="IslandSizeSlider" type="HSlider" parent="CanvasLayer/UI/VBoxContainer/IslandSizeContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="FalloffContainer" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+
+[node name="FalloffLabel" type="Label" parent="CanvasLayer/UI/VBoxContainer/FalloffContainer"]
+layout_mode = 2
+text = "Falloff"
+
+[node name="FalloffSlider" type="HSlider" parent="CanvasLayer/UI/VBoxContainer/FalloffContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="GenerateButton" type="Button" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
