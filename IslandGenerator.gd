@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 class_name IslandGenerator
 
@@ -7,6 +6,8 @@ class_name IslandGenerator
 @export var island_size: float = 0.7
 @export var falloff_strength: float = 3.0
 @export var generate_on_ready: bool = true
+@export var sapling_scene: PackedScene  # assign your TreeSapling.tscn in the editor
+@export var sapling_chance: float = 0.1  # 10% chance
 
 # TileMap reference
 @onready var tile_map: TileMapLayer = $TileMapLayer
@@ -14,13 +15,16 @@ class_name IslandGenerator
 # Noise generator
 var noise: FastNoiseLite
 
-# Tile source IDs (you'll need to set these up in your TileSet)
-const DEEP_WATER = 5
+# Store spawned trees for cleanup
+var spawned_trees: Array[Node2D] = []
+
+# Tile source IDs 
+const DEEP_WATER = 6
 const SHALLOW_WATER = 2
-const BEACH = 3
+const BEACH = 4
 const GRASS = 0
 const FOREST = 1
-const MOUNTAIN = 4
+const MOUNTAIN = 8
 
 func _ready():
 	setup_noise()
@@ -38,8 +42,9 @@ func generate_island():
 		print("TileMap not found!")
 		return
 	
-	# Clear existing tiles
+	# Clear existing tiles and trees
 	tile_map.clear()
+	clear_trees()
 	
 	# Generate height map and place tiles
 	for x in range(map_size):
@@ -49,6 +54,38 @@ func generate_island():
 			
 			# Place tile at position
 			tile_map.set_cell(Vector2i(x, y), 0, Vector2i(tile_type, 0))
+			
+			# Spawn trees on grass tiles
+			if tile_type == GRASS and randf() < sapling_chance:
+				spawn_tree_at_tile(x, y)
+
+func spawn_tree_at_tile(tile_x: int, tile_y: int):
+	if not sapling_scene:
+		print("Sapling scene not assigned!")
+		return
+	
+	# Instance the tree
+	var tree = sapling_scene.instantiate()
+	
+	# Convert tile coordinates to world position
+	var world_pos = tile_map.map_to_local(Vector2i(tile_x, tile_y))
+	tree.position = world_pos
+	
+	# Add some random offset so trees don't align perfectly to grid
+	tree.position += Vector2(randf_range(-8, 8), randf_range(-8, 8))
+	
+	# Add tree to the scene
+	add_child(tree)
+	
+	# Keep track of spawned trees
+	spawned_trees.append(tree)
+
+func clear_trees():
+	# Remove all previously spawned trees
+	for tree in spawned_trees:
+		if is_instance_valid(tree):
+			tree.queue_free()
+	spawned_trees.clear()
 
 func calculate_height(x: int, y: int) -> float:
 	# Get noise value

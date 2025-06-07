@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0xe44577kf6s"]
+
+[ext_resource type="Texture2D" uid="uid://bh1hasfld6urq" path="res://world/assets/objects.png" id="1_kb73w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1dqn"]
+atlas = ExtResource("1_kb73w")
+region = Rect2(0, 32, 16, 32)
+
+[node name="sapling_tree" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_l1dqn")
+offset = Vector2(0, -16)
