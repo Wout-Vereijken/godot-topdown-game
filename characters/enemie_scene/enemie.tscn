@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cymbo15ktkemc"]
+
+[ext_resource type="Script" uid="uid://ccbun6exptr6t" path="res://characters/enemie_scene/enemie.gd" id="1_ybm75"]
+[ext_resource type="Texture2D" uid="uid://kgboh8f8ujfj" path="res://characters/enemie_scene/5lowoin4.png" id="2_8fgvc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fgvc"]
+
+[node name="enemie" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_ybm75")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_8fgvc")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.19209e-07, -1)
+scale = Vector2(0.360001, 0.360001)
+shape = SubResource("CircleShape2D_8fgvc")
+metadata/_edit_group_ = true
+
+[node name="navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="navigation"]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="navigation"]
+wait_time = 0.1
+autostart = true

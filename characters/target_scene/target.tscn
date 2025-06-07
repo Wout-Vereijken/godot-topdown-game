@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://buxcqmkqmyujk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xb5fd"]
+
+[node name="target" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xb5fd")
+metadata/_edit_lock_ = true
