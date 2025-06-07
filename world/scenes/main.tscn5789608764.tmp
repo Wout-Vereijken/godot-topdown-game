@@ -26,7 +26,7 @@ sources/0 = SubResource("TileSetAtlasSource_l2kdp")
 
 [node name="IslandGenerator" type="Node2D" parent="."]
 script = ExtResource("1_6y8n1")
-map_size = 1028
+noise_scale = 0.05
 
 [node name="TextureRect" type="TextureRect" parent="IslandGenerator"]
 offset_right = 1920.0

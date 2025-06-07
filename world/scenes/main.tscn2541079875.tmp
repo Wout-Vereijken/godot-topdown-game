@@ -16,8 +16,6 @@ texture = ExtResource("2_fltyv")
 9:0/0 = 0
 8:0/0 = 0
 6:0/0 = 0
-10:0/0 = 0
-11:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_tns44"]
 sources/0 = SubResource("TileSetAtlasSource_l2kdp")
@@ -26,7 +24,7 @@ sources/0 = SubResource("TileSetAtlasSource_l2kdp")
 
 [node name="IslandGenerator" type="Node2D" parent="."]
 script = ExtResource("1_6y8n1")
-map_size = 1028
+map_size = 256
 
 [node name="TextureRect" type="TextureRect" parent="IslandGenerator"]
 offset_right = 1920.0
