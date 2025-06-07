@@ -6,8 +6,16 @@ class_name IslandGenerator
 @export var island_size: float = 0.7
 @export var falloff_strength: float = 3.0
 @export var generate_on_ready: bool = true
-@export var sapling_scene: PackedScene  # assign your TreeSapling.tscn in the editor
-@export var sapling_chance: float = 0.1  # 10% chance
+
+# Saplings for GRASS biome
+@export_group("Grass Biome Saplings")
+@export var grass_sapling_scenes: Array[PackedScene] = []
+@export var grass_sapling_chances: Array[float] = [] # All chances here, total spawn chance = sum
+
+# Saplings for FOREST biome
+@export_group("Forest Biome Saplings")
+@export var forest_sapling_scenes: Array[PackedScene] = []
+@export var forest_sapling_chances: Array[float] = [] # All chances here
 
 # TileMap reference
 @onready var tile_map: TileMapLayer = $TileMapLayer
@@ -42,68 +50,72 @@ func generate_island():
 		print("TileMap not found!")
 		return
 	
-	# Clear existing tiles and trees
 	tile_map.clear()
 	clear_trees()
 	
-	# Generate height map and place tiles
 	for x in range(map_size):
 		for y in range(map_size):
 			var height = calculate_height(x, y)
 			var tile_type = get_tile_type(height)
-			
-			# Place tile at position
 			tile_map.set_cell(Vector2i(x, y), 0, Vector2i(tile_type, 0))
 			
-			# Spawn trees on grass tiles
-			if tile_type == GRASS and randf() < sapling_chance:
-				spawn_tree_at_tile(x, y)
+			match tile_type:
+				GRASS:
+					spawn_sapling_for_biome(x, y, grass_sapling_scenes, grass_sapling_chances)
+				FOREST:
+					spawn_sapling_for_biome(x, y, forest_sapling_scenes, forest_sapling_chances)
+				_:
+					pass
 
-func spawn_tree_at_tile(tile_x: int, tile_y: int):
-	if not sapling_scene:
-		print("Sapling scene not assigned!")
+func spawn_sapling_for_biome(tile_x: int, tile_y: int, scenes: Array[PackedScene], chances: Array[float]):
+	if scenes.size() == 0 or chances.size() == 0:
 		return
 	
-	# Instance the tree
-	var tree = sapling_scene.instantiate()
+	var total_chance = 0.0
+	for chance in chances:
+		total_chance += chance
 	
-	# Convert tile coordinates to world position
+	if total_chance <= 0:
+		return
+	
+	# First decide if we spawn any sapling at all on this tile
+	if randf() > total_chance:
+		return
+	
+	var r = randf() * total_chance
+	var cumulative = 0.0
+	for i in range(scenes.size()):
+		cumulative += chances[i]
+		if r <= cumulative:
+			spawn_tree_at_tile(tile_x, tile_y, scenes[i])
+			return
+
+func spawn_tree_at_tile(tile_x: int, tile_y: int, tree_scene: PackedScene):
+	if not tree_scene:
+		return
+	
+	var tree = tree_scene.instantiate()
 	var world_pos = tile_map.map_to_local(Vector2i(tile_x, tile_y))
-	tree.position = world_pos
-	
-	# Add some random offset so trees don't align perfectly to grid
-	tree.position += Vector2(randf_range(-8, 8), randf_range(-8, 8))
-	
-	# Add tree to the scene
+	tree.position = world_pos + Vector2(randf_range(-8, 8), randf_range(-8, 8))
 	add_child(tree)
-	
-	# Keep track of spawned trees
 	spawned_trees.append(tree)
 
 func clear_trees():
-	# Remove all previously spawned trees
 	for tree in spawned_trees:
 		if is_instance_valid(tree):
 			tree.queue_free()
 	spawned_trees.clear()
 
 func calculate_height(x: int, y: int) -> float:
-	# Get noise value
 	var noise_value = noise.get_noise_2d(x, y)
-	
-	# Calculate distance from center for radial falloff
 	var center_x = map_size / 2.0
 	var center_y = map_size / 2.0
 	var distance = sqrt((x - center_x) * (x - center_x) + (y - center_y) * (y - center_y))
 	var max_distance = map_size * island_size / 3.0
-	
-	# Apply radial falloff
 	var falloff = 1.0
 	if distance > max_distance:
 		falloff = pow(1.0 - (distance - max_distance) / (map_size / 2.0 - max_distance), falloff_strength)
 		falloff = max(0.0, falloff)
-	
-	# Combine noise and falloff
 	var height = (noise_value + 1.0) / 2.0 * falloff
 	return clamp(height, 0.0, 1.0)
 
