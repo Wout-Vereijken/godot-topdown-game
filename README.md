@@ -1,17 +1,15 @@
 Godot Top-down Game
 
 A simple top-down game built with Godot Engine.
-This project explores player movement, collisions, enemies, and interactive gameplay elements in a top-down perspective.
+This project explores procedural generation using noise maps.
 
 ✨ Features
 
-Smooth player movement and collisions
+Smooth camera movement
 
-Enemies with simple AI behaviour
+Placable objects
 
-Collectible items and score system
-
-Multiple scenes/levels
+Multiple biomes
 
 Pixel-style top-down view
 
